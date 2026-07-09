@@ -990,4 +990,90 @@ function pcInitChart(){
     },
     options:{
       responsive:true, maintainAspectRatio:false,
-      plugins:{ legend:{position:'bottom', labels:{boxWidth:11,font:{size:10.5}}}, title:{
+      plugins:{ legend:{position:'bottom', labels:{boxWidth:11,font:{size:10.5}}}, title:{display:true,text:'月度利润构成（占总收入%）'} }
+    }
+  });
+}
+
+function pcCalc(){
+  const price = pcVal('pcPrice'), units = pcVal('pcUnits');
+  const cogs = pcVal('pcCogs'), freight = pcVal('pcFreight'), otherLog = pcVal('pcOtherLog');
+  const tariffRate = pcVal('pcTariffRate'), importFeesRate = pcVal('pcImportFees');
+  const referralRate = pcVal('pcReferralRate'), referralMin = pcVal('pcReferralMin');
+  const fba = pcVal('pcFba'), storage = pcVal('pcStorage');
+  const acos = pcVal('pcAcos'), otherMkt = pcVal('pcOtherMkt');
+  const returnRate = pcVal('pcReturnRate'), refundFee = pcVal('pcRefundFee');
+
+  const revenue = price*units;
+  const returnLostRevenue = revenue*returnRate/100;
+  const referralPerUnit = Math.max(price*referralRate/100, referralMin);
+  const referralTotal = referralPerUnit*units;
+  const fbaTotal = fba*units;
+  const storageTotal = storage*units;
+  const cogsTotal = (cogs+freight+otherLog)*units;
+  const dutiableValuePerUnit = cogs+freight;
+  const tariffPerUnit = dutiableValuePerUnit*tariffRate/100;
+  const importFeesPerUnit = dutiableValuePerUnit*importFeesRate/100;
+  const tariffTotal = tariffPerUnit*units;
+  const importFeesTotal = importFeesPerUnit*units;
+  const tariffAndFeesTotal = tariffTotal + importFeesTotal;
+  const adTotal = revenue*acos/100;
+  const otherMktTotal = otherMkt*units;
+  const refundFeeTotal = refundFee*units*returnRate/100;
+  const otherCostLump = returnLostRevenue + refundFeeTotal + otherMktTotal;
+
+  const grossProfit = revenue - referralTotal - fbaTotal - storageTotal - cogsTotal - tariffAndFeesTotal;
+  const grossMargin = revenue>0 ? grossProfit/revenue*100 : 0;
+  const netProfit = grossProfit - adTotal - otherCostLump;
+  const netMargin = revenue>0 ? netProfit/revenue*100 : 0;
+  const perUnitProfit = units>0 ? netProfit/units : 0;
+  const totalInvestment = cogsTotal + tariffAndFeesTotal;
+  const roi = totalInvestment>0 ? netProfit/totalInvestment*100 : 0;
+  const breakEvenAcos = revenue>0 ? Math.max(0,(grossProfit - otherCostLump)/revenue*100) : 0;
+
+  const stats = document.getElementById('pcStats');
+  const box = (label, val, neg) => `<div class="stat-box"><div class="v${neg?' neg':''}">${val}</div><div class="l">${label}</div></div>`;
+  stats.innerHTML =
+    box('月总收入', pcFmt0(revenue)) +
+    box('关税+报关杂费/件', pcFmt$(tariffPerUnit+importFeesPerUnit)) +
+    box('月度关税+杂费总额', pcFmt0(tariffAndFeesTotal)) +
+    box('毛利润（扣佣金/FBA/仓储/产品成本/关税）', pcFmt0(grossProfit), grossProfit<0) +
+    box('毛利率', grossMargin.toFixed(1)+'%', grossMargin<0) +
+    box('月净利润（再扣广告/退货/其他）', pcFmt0(netProfit), netProfit<0) +
+    box('净利率', netMargin.toFixed(1)+'%', netMargin<0) +
+    box('单件净利润', pcFmt$(perUnitProfit), perUnitProfit<0) +
+    box('ROI（净利润/产品成本+关税投入）', roi.toFixed(0)+'%', roi<0) +
+    box('盈亏平衡ACOS上限', breakEvenAcos.toFixed(1)+'%', breakEvenAcos<0);
+
+  if(pcChart){
+    const denom = revenue>0 ? revenue : 1;
+    const pct = v => Math.max(v,0)/denom*100;
+    pcChart.data.datasets[0].data = [
+      pct(cogsTotal), pct(tariffAndFeesTotal), pct(referralTotal), pct(fbaTotal), pct(storageTotal),
+      pct(adTotal), pct(otherCostLump), pct(Math.max(netProfit,0))
+    ];
+    pcChart.update();
+  }
+
+  pcSave();
+}
+
+function pcReset(){
+  ['pcPrice','pcUnits','pcCogs','pcFreight','pcOtherLog','pcFba','pcStorage','pcOtherMkt','pcRefundFee'].forEach(id=>document.getElementById(id).value='');
+  document.getElementById('pcReferralRate').value = 15;
+  document.getElementById('pcReferralMin').value = 0.30;
+  document.getElementById('pcTariffRate').value = 35;
+  document.getElementById('pcImportFees').value = 0.47;
+  document.getElementById('pcAcos').value = 15;
+  document.getElementById('pcReturnRate').value = 5;
+  try{ localStorage.removeItem(PC_STORAGE_KEY); }catch(e){}
+  pcCalc();
+}
+
+pcInitChart();
+pcRestore();
+pcCalc();
+
+</script>
+</body>
+</html>
