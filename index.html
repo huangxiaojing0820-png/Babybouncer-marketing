@@ -22,7 +22,9 @@
   header.hero h1{font-size:28px;margin:0 0 12px;letter-spacing:.3px;font-weight:700;}
   header.hero .meta-line{font-size:13.5px;opacity:.88;}
   header.hero .meta-line b{opacity:1;font-weight:600;}
-  .kpi-row{max-width:1200px;margin:24px auto 30px;padding:0 24px;display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:16px;}
+  .kpi-row{max-width:1200px;margin:24px auto 30px;padding:0 24px;display:grid;grid-template-columns:repeat(6,1fr);gap:16px;}
+  @media screen and (max-width:960px){.kpi-row{grid-template-columns:repeat(3,1fr);}}
+  @media screen and (max-width:560px){.kpi-row{grid-template-columns:repeat(2,1fr);}}
   .kpi{background:var(--card);border-radius:14px;box-shadow:0 6px 20px rgba(20,30,60,.08);padding:18px 20px;text-align:center;border-top:4px solid var(--primary);}
   .kpi .num{font-size:24px;font-weight:700;color:var(--primary-dark);}
   .kpi .lbl{font-size:12.5px;color:var(--muted);margin-top:4px;}
@@ -455,28 +457,28 @@
       </div>
       <div class="table-scroll">
         <table>
-          <thead><tr><th>#</th><th>ASIN</th><th>品牌</th><th>月销售额(真实)</th><th>假设ACOS</th><th>预估月广告花费</th><th>占月销售额比例</th></tr></thead>
+          <thead><tr><th>#</th><th>图片</th><th>ASIN</th><th>品牌</th><th>月销售额(真实)</th><th>假设ACOS</th><th>预估月广告花费</th><th>占月销售额比例</th></tr></thead>
           <tbody>
-            <tr><td>1</td><td>B08PDPK1JS</td><td>Ingenuity</td><td>$989,668</td><td>15%</td><td>$148,450</td><td>15.0%</td></tr>
-            <tr><td>2</td><td>B0CLVMCHTJ</td><td>BabyBjörn</td><td>$3,214,570</td><td>15%</td><td>$482,186</td><td>15.0%</td></tr>
-            <tr><td>3</td><td>B095F28Q6J</td><td>Baby Delight</td><td>$961,092</td><td>15%</td><td>$144,164</td><td>15.0%</td></tr>
-            <tr><td>4</td><td>B07R2Y3YLC</td><td>Bright Starts</td><td>$172,495</td><td>15%</td><td>$25,874</td><td>15.0%</td></tr>
-            <tr><td>5</td><td>B0DSR243ZF</td><td>Baby Delight</td><td>$295,307</td><td>15%</td><td>$44,296</td><td>15.0%</td></tr>
-            <tr><td>6</td><td>B0CRHMTRY1</td><td>HKAI</td><td>$140,877</td><td>15%</td><td>$21,132</td><td>15.0%</td></tr>
-            <tr><td>7</td><td>B0BLP5G5FJ</td><td>Bright Starts</td><td>$66,820</td><td>15%</td><td>$10,023</td><td>15.0%</td></tr>
-            <tr><td>8</td><td>B0GCDR37LK</td><td>HKAI</td><td>$165,419</td><td>15%</td><td>$24,813</td><td>15.0%</td></tr>
-            <tr><td>9</td><td>B0GCDW8DP9</td><td>HKAI</td><td>$103,379</td><td>15%</td><td>$15,507</td><td>15.0%</td></tr>
-            <tr><td>10</td><td>B0DNHJ1DTG</td><td>Mommyhug</td><td>$91,604</td><td>15%</td><td>$13,741</td><td>15.0%</td></tr>
-            <tr><td>11</td><td>B0D5DK9XT5</td><td>BabyBjörn</td><td>$360,164</td><td>15%</td><td>$54,025</td><td>15.0%</td></tr>
-            <tr><td>12</td><td>B0FPFYK3MV</td><td>Tiny Marvels</td><td>$55,848</td><td>15%</td><td>$8,377</td><td>15.0%</td></tr>
-            <tr><td>13</td><td>B07QXL2V91</td><td>Ingenuity</td><td>$73,435</td><td>15%</td><td>$11,015</td><td>15.0%</td></tr>
-            <tr><td>14</td><td>B0BF31VXSX</td><td>Ergobaby</td><td>$288,550</td><td>15%</td><td>$43,283</td><td>15.0%</td></tr>
-            <tr><td>15</td><td>B0FW4XWQ92</td><td>Wnttmt</td><td>$77,843</td><td>15%</td><td>$11,676</td><td>15.0%</td></tr>
-            <tr><td>16</td><td>B0C7BBCWML</td><td>Bright Starts</td><td>$37,994</td><td>15%</td><td>$5,699</td><td>15.0%</td></tr>
-            <tr><td>17</td><td>B0F2Y7ZBYQ</td><td>Otrolepota</td><td>$36,916</td><td>15%</td><td>$5,537</td><td>15.0%</td></tr>
-            <tr><td>18</td><td>B0CPTBY6M6</td><td>Maxi-Cosi</td><td>$127,026</td><td>15%</td><td>$19,054</td><td>15.0%</td></tr>
-            <tr><td>19</td><td>B0CS9M7RF8</td><td>Cuddo Baby</td><td>$107,903</td><td>15%</td><td>$16,185</td><td>15.0%</td></tr>
-            <tr><td>20</td><td>B07ZHWF2NW</td><td>Dream On Me</td><td>$64,539</td><td>15%</td><td>$9,681</td><td>15.0%</td></tr>
+            <tr><td>1</td><td><img class="prod-img" src="https://images-na.ssl-images-amazon.com/images/I/81x2NaWOZqL._AC_US200_.jpg" loading="lazy" onerror="this.style.opacity=0.2"></td><td>B08PDPK1JS</td><td>Ingenuity</td><td>$989,668</td><td>15%</td><td>$148,450</td><td>15.0%</td></tr>
+            <tr><td>2</td><td><img class="prod-img" src="https://images-na.ssl-images-amazon.com/images/I/61ZVRZCr9BL._AC_US200_.jpg" loading="lazy" onerror="this.style.opacity=0.2"></td><td>B0CLVMCHTJ</td><td>BabyBjörn</td><td>$3,214,570</td><td>15%</td><td>$482,186</td><td>15.0%</td></tr>
+            <tr><td>3</td><td><img class="prod-img" src="https://images-na.ssl-images-amazon.com/images/I/61w8-KjfBAL._AC_US200_.jpg" loading="lazy" onerror="this.style.opacity=0.2"></td><td>B095F28Q6J</td><td>Baby Delight</td><td>$961,092</td><td>15%</td><td>$144,164</td><td>15.0%</td></tr>
+            <tr><td>4</td><td><img class="prod-img" src="https://images-na.ssl-images-amazon.com/images/I/81KwG5CuhLL._AC_US200_.jpg" loading="lazy" onerror="this.style.opacity=0.2"></td><td>B07R2Y3YLC</td><td>Bright Starts</td><td>$172,495</td><td>15%</td><td>$25,874</td><td>15.0%</td></tr>
+            <tr><td>5</td><td><img class="prod-img" src="https://images-na.ssl-images-amazon.com/images/I/81iqJfSg8dL._AC_US200_.jpg" loading="lazy" onerror="this.style.opacity=0.2"></td><td>B0DSR243ZF</td><td>Baby Delight</td><td>$295,307</td><td>15%</td><td>$44,296</td><td>15.0%</td></tr>
+            <tr><td>6</td><td><img class="prod-img" src="https://images-na.ssl-images-amazon.com/images/I/71iJLDE6kwL._AC_US200_.jpg" loading="lazy" onerror="this.style.opacity=0.2"></td><td>B0CRHMTRY1</td><td>HKAI</td><td>$140,877</td><td>15%</td><td>$21,132</td><td>15.0%</td></tr>
+            <tr><td>7</td><td><img class="prod-img" src="https://images-na.ssl-images-amazon.com/images/I/71sH0fC5joL._AC_US200_.jpg" loading="lazy" onerror="this.style.opacity=0.2"></td><td>B0BLP5G5FJ</td><td>Bright Starts</td><td>$66,820</td><td>15%</td><td>$10,023</td><td>15.0%</td></tr>
+            <tr><td>8</td><td><img class="prod-img" src="https://images-na.ssl-images-amazon.com/images/I/71iJLDE6kwL._AC_US200_.jpg" loading="lazy" onerror="this.style.opacity=0.2"></td><td>B0GCDR37LK</td><td>HKAI</td><td>$165,419</td><td>15%</td><td>$24,813</td><td>15.0%</td></tr>
+            <tr><td>9</td><td><img class="prod-img" src="https://m.media-amazon.com/images/I/41wvEQ314tL._SS200_.jpg" loading="lazy" onerror="this.style.opacity=0.2"></td><td>B0GCDW8DP9</td><td>HKAI</td><td>$103,379</td><td>15%</td><td>$15,507</td><td>15.0%</td></tr>
+            <tr><td>10</td><td><img class="prod-img" src="https://images-na.ssl-images-amazon.com/images/I/718l0O9sqSL._AC_US200_.jpg" loading="lazy" onerror="this.style.opacity=0.2"></td><td>B0DNHJ1DTG</td><td>Mommyhug</td><td>$91,604</td><td>15%</td><td>$13,741</td><td>15.0%</td></tr>
+            <tr><td>11</td><td><img class="prod-img" src="https://images-na.ssl-images-amazon.com/images/I/61oo1Gyn8kL._AC_US200_.jpg" loading="lazy" onerror="this.style.opacity=0.2"></td><td>B0D5DK9XT5</td><td>BabyBjörn</td><td>$360,164</td><td>15%</td><td>$54,025</td><td>15.0%</td></tr>
+            <tr><td>12</td><td><img class="prod-img" src="https://images-na.ssl-images-amazon.com/images/I/71cZEibVt3L._AC_US200_.jpg" loading="lazy" onerror="this.style.opacity=0.2"></td><td>B0FPFYK3MV</td><td>Tiny Marvels</td><td>$55,848</td><td>15%</td><td>$8,377</td><td>15.0%</td></tr>
+            <tr><td>13</td><td><img class="prod-img" src="https://images-na.ssl-images-amazon.com/images/I/71Jeb51gy5L._AC_US200_.jpg" loading="lazy" onerror="this.style.opacity=0.2"></td><td>B07QXL2V91</td><td>Ingenuity</td><td>$73,435</td><td>15%</td><td>$11,015</td><td>15.0%</td></tr>
+            <tr><td>14</td><td><img class="prod-img" src="https://images-na.ssl-images-amazon.com/images/I/71uWBY8tBML._AC_US200_.jpg" loading="lazy" onerror="this.style.opacity=0.2"></td><td>B0BF31VXSX</td><td>Ergobaby</td><td>$288,550</td><td>15%</td><td>$43,283</td><td>15.0%</td></tr>
+            <tr><td>15</td><td><img class="prod-img" src="https://images-na.ssl-images-amazon.com/images/I/61RuiVnFusL._AC_US200_.jpg" loading="lazy" onerror="this.style.opacity=0.2"></td><td>B0FW4XWQ92</td><td>Wnttmt</td><td>$77,843</td><td>15%</td><td>$11,676</td><td>15.0%</td></tr>
+            <tr><td>16</td><td><img class="prod-img" src="https://images-na.ssl-images-amazon.com/images/I/71vF-+ab6uL._AC_US200_.jpg" loading="lazy" onerror="this.style.opacity=0.2"></td><td>B0C7BBCWML</td><td>Bright Starts</td><td>$37,994</td><td>15%</td><td>$5,699</td><td>15.0%</td></tr>
+            <tr><td>17</td><td><img class="prod-img" src="https://images-na.ssl-images-amazon.com/images/I/61WQsSQYFqL._AC_US200_.jpg" loading="lazy" onerror="this.style.opacity=0.2"></td><td>B0F2Y7ZBYQ</td><td>Otrolepota</td><td>$36,916</td><td>15%</td><td>$5,537</td><td>15.0%</td></tr>
+            <tr><td>18</td><td><img class="prod-img" src="https://images-na.ssl-images-amazon.com/images/I/81hgCqbY0QL._AC_US200_.jpg" loading="lazy" onerror="this.style.opacity=0.2"></td><td>B0CPTBY6M6</td><td>Maxi-Cosi</td><td>$127,026</td><td>15%</td><td>$19,054</td><td>15.0%</td></tr>
+            <tr><td>19</td><td><img class="prod-img" src="https://images-na.ssl-images-amazon.com/images/I/61l9RbG5MZL._AC_US200_.jpg" loading="lazy" onerror="this.style.opacity=0.2"></td><td>B0CS9M7RF8</td><td>Cuddo Baby</td><td>$107,903</td><td>15%</td><td>$16,185</td><td>15.0%</td></tr>
+            <tr><td>20</td><td><img class="prod-img" src="https://images-na.ssl-images-amazon.com/images/I/71G+RSUqBXL._AC_US200_.jpg" loading="lazy" onerror="this.style.opacity=0.2"></td><td>B07ZHWF2NW</td><td>Dream On Me</td><td>$64,539</td><td>15%</td><td>$9,681</td><td>15.0%</td></tr>
           </tbody>
         </table>
       </div>
